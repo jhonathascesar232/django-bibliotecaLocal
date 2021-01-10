@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>All Borrowed books</h1>
+
+    {% if instancialivro_list %}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    Titulo:
+                </th>
+                <th>
+                    Pertencente:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bookinst in instancialivro_list %}
+            <tr>
+                {% if bookinst.livro.titulo %}
+                    <td class="text-center">
+                        
+                        <a href="/catalogo/book/{{bookinst.livro.id}}">
+                            {{bookinst.livro.titulo}}
+                        </a>
+                    </td>
+                    <td class="lead">
+                        ({{ bookinst.borrower.get_username|upper }})
+                    </td>
+                    <td>
+                        {% if perms.catalogo.can_mark_returned %}- 
+                            <a href="{% url 'renew-book-librarian' bookinst.id %}">
+                                Renew
+                            </a>
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    {% else %}
+      <p class="display-2">Não há livros emprestados.</p>
+    {% endif %}
+{% endblock %}

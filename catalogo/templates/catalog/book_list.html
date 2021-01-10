@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Book List</h1>
+    {% if livro_list %}
+        <ul class="">
+            {% for book in livro_list %}
+                <li class="">
+                    <a href="{{ book.get_absolute_url }}" class="mx-2">{{ book.titulo }}</a> ({{book.autor}}) -> 
+                    {% if perms.catalogo.can_mark_returned %}        
+                        <a class="btn btn-sm btn-primary mx-2" href="{% url 'book-update' book.pk %}">
+                            Update
+                        </a>
+                        <a href="{% url 'book-delete' book.pk %}" class="btn btn-warning mx-2">
+                            Delete
+                        </a>  
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no books in the library.</p>
+    {% endif %} 
+    {{livro_list.some_data}}
+{% endblock %}
