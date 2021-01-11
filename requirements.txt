@@ -1,0 +1,14 @@
+asgiref==3.3.1
+dj-database-url==0.5.0
+Django==3.1.4
+django-cpf==0.1.0
+flake8==3.8.4
+gunicorn==20.0.4
+mccabe==0.6.1
+Pillow==8.1.0
+psycopg2-binary==2.8.6
+pycodestyle==2.6.0
+pyflakes==2.2.0
+pytz==2020.5
+sqlparse==0.4.1
+whitenoise==5.2.0
