@@ -3,3 +3,9 @@
     padding: 0;
     list-style: none;
 }
+.col-sm-8.gray{
+	background-color: red;
+}
+#transparente{
+	background-color: black;
+}
